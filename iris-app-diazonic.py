@@ -36,8 +36,9 @@ y = iris.target
 # Apply KNN algorithm
 
 #model = KNeighborsClassifier(n_neighbors=5)
-model = SVC()
+model = SVC(probability=True)
 model.fit(x,y)
+
 prediction = model.predict(df)
 
 st.subheader('Class Labels and their corresponding index number')
@@ -46,5 +47,9 @@ st.write(iris.target_names)
 
 st.subheader('Prediction')
 st.write(iris.target_names[prediction])
+
+q = model.predict_proba(df)
+for index, item in enumerate(iris.target_names):
+  st.write(f'{item} : {q[0][index]*100}')
  
  
