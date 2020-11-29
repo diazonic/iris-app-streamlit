@@ -2,7 +2,8 @@
 import pandas as pd
 import streamlit as st
 from sklearn import datasets
-from sklearn.neighbors import KNeighborsClassifier
+#from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 
 def user_input():
   sepal_length = st.sidebar.slider('Sepal Length',4.3,7.9,5.4)   # min,max,initial
@@ -19,7 +20,8 @@ def user_input():
 st.write("# Simple **Iris Flower** Prediction App")
 st.write("# Iris Dataset")
 st.write(" Number of Classes : 3")
-st.write(" Classifier : KNN")
+#st.write(" Classifier : KNN")
+st.write(" Classifier : SVC")
 st.write("Accuracy = 0.95")
 st.sidebar.header('User Input Parameters')
 st.subheader('User Input Parameters')
@@ -33,7 +35,8 @@ y = iris.target
 
 # Apply KNN algorithm
 
-model = KNeighborsClassifier(n_neighbors=5)
+#model = KNeighborsClassifier(n_neighbors=5)
+model = SVC()
 model.fit(x,y)
 prediction = model.predict(df)
 
